@@ -544,12 +544,15 @@ function submitForm(){
   const type=document.getElementById('ftype').value||'Belgilanmagan';
   const msg=document.getElementById('fmsg').value.trim();
   const text=`🛋️ AMARANTH MEBEL — YANGI ARIZA\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n📦 Mebel turi: ${type}\n💬 Xabar: ${msg||'—'}`;
-  // ⬇️ Shu yerga o'z BOT TOKEN va CHAT ID ni kiriting
-  fetch(`https://api.telegram.org/bot8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg/sendMessage`,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({chat_id:'1455425842', text})
-  }).catch(()=>{});
+  const BOT='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
+  const TARGETS=['1455425842','-1003740433377'];
+  TARGETS.forEach(id=>{
+    fetch(`https://api.telegram.org/bot${BOT}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:id, text})
+    }).catch(()=>{});
+  });
   const btn=document.querySelector('.bf');
   btn.textContent='✓ Arizangiz qabul qilindi! 30 daqiqa ichida bog\'lanamiz.';
   btn.style.background='#27AE60';
