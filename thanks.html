@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMARANTH — Rahmat!</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--black:#050505;--cream:#EDE7D9;--warm:#F5F2EC;--gold:#A8893A;--brown:#1C1208;--muted:#4A4038;--border:rgba(168,137,58,0.3);}
+body{font-family:'Jost',sans-serif;background:var(--black);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(168,137,58,0.07) 0%,transparent 60%);pointer-events:none;}
+.logo-wrap{position:fixed;top:0;left:0;right:0;padding:16px 40px;display:flex;align-items:center;gap:12px;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(168,137,58,0.15);z-index:10;}
+.logo-wrap img{height:34px;filter:brightness(0) invert(1);}
+.lname{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:5px;color:#fff;}
+.lsub{font-size:8px;letter-spacing:3px;color:var(--gold);}
+.card{background:var(--warm);padding:64px 56px 52px;max-width:560px;width:100%;text-align:center;position:relative;animation:fadeUp 0.7s ease both;margin-top:80px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:2px;background:var(--gold);}
+.check{width:76px;height:76px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;animation:scaleIn 0.5s 0.3s ease both;}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+.check svg{width:32px;height:32px;stroke:var(--gold);stroke-width:2.5;fill:none;}
+.eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,46px);font-weight:600;color:var(--black);line-height:1.15;margin-bottom:18px;}
+h1 em{font-style:italic;color:var(--gold);}
+.desc{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:30px;font-weight:300;}
+.desc strong{color:var(--brown);font-weight:500;}
+.phone-box{background:var(--cream);border:1px solid var(--border);padding:20px 28px;margin-bottom:32px;}
+.ph-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.ph-num{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);font-weight:600;color:var(--black);letter-spacing:2px;}
+.divider{display:flex;align-items:center;gap:14px;margin-bottom:26px;color:var(--muted);font-size:11px;letter-spacing:2px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-p{background:var(--black);color:#fff;padding:15px 30px;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;transition:background 0.3s;display:inline-block;}
+.btn-p:hover{background:var(--gold);}
+.btn-s{background:transparent;color:var(--black);padding:15px 30px;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;border:1.5px solid var(--black);transition:all 0.3s;display:inline-block;}
+.btn-s:hover{background:var(--black);color:#fff;}
+.timer{margin-top:26px;font-size:11px;color:var(--muted);letter-spacing:1px;}
+.tbar{width:100%;height:2px;background:var(--border);margin-top:8px;overflow:hidden;}
+.tfill{height:100%;background:var(--gold);animation:timer 30s linear forwards;width:100%;}
+@keyframes timer{from{width:100%}to{width:0%}}
+@media(max-width:600px){.card{padding:40px 22px 34px;margin-top:68px;}.logo-wrap{padding:14px 18px;}.btns{flex-direction:column;}.btn-p,.btn-s{text-align:center;}}
+</style>
+</head>
+<body>
+<div class="logo-wrap">
+  <img src="data:image/jpeg;base64,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" alt="AMARANTH">
+  <div><div class="lname">AMARANTH</div><div class="lsub">Interior</div></div>
+</div>
+<div class="card">
+  <div class="check">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <div class="eyebrow">Ariza qabul qilindi</div>
+  <h1>Vaqtingizni ajratganingiz<br>uchun <em>rahmat!</em></h1>
+  <p class="desc">Tez orada bizning <strong>managerlarimiz</strong> sizga<br>quyidagi raqamdan aloqa chiqishadi:</p>
+  <div class="phone-box">
+    <div class="ph-label">Bizning raqamimiz</div>
+    <div class="ph-num">+998-99-999-99-99</div>
+  </div>
+  <div class="divider">yoki o'zingiz bog'laning</div>
+  <div class="btns">
+    <a href="https://t.me/amaranthmebel" target="_blank" class="btn-p">Telegram orqali yozish</a>
+    <a href="index.html" class="btn-s">Bosh sahifaga qaytish</a>
+  </div>
+  <div class="timer">
+    <span>30 soniyadan so'ng avtomatik qaytish...</span>
+    <div class="tbar"><div class="tfill"></div></div>
+  </div>
+</div>
+<script>
+setTimeout(function(){window.location.href='index.html';},30000);
+</script>
+</body>
+</html>
