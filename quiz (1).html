@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMARANTH — Bepul Maslahat</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--black:#050505;--cream:#EDE7D9;--warm:#F5F2EC;--gold:#A8893A;--brown:#1C1208;--muted:#4A4038;--border:rgba(168,137,58,0.3);}
+body{font-family:'Jost',sans-serif;background:var(--black);min-height:100vh;display:flex;flex-direction:column;}
+.header{padding:18px 40px;display:flex;align-items:center;gap:14px;background:rgba(5,5,5,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(168,137,58,0.2);position:sticky;top:0;z-index:100;}
+.header img{height:36px;filter:brightness(0) invert(1);}
+.hname{font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:5px;color:#fff;}
+.hsub{font-size:8px;letter-spacing:3px;color:var(--gold);}
+.back-link{margin-left:auto;color:var(--gold);text-decoration:none;font-size:10px;letter-spacing:2px;text-transform:uppercase;}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:radial-gradient(ellipse at top,#1a1208 0%,#050505 70%);}
+.card{width:100%;max-width:620px;background:var(--warm);padding:52px 52px 44px;box-shadow:0 40px 80px rgba(0,0,0,0.7);animation:fadeUp 0.5s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.prog-wrap{margin-bottom:36px;}
+.prog-bar{width:100%;height:2px;background:var(--border);}
+.prog-fill{height:2px;background:var(--gold);transition:width 0.45s ease;}
+.prog-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
+.dots{display:flex;gap:5px;}
+.dot{width:6px;height:6px;background:var(--border);transition:all 0.3s;}
+.dot.done{background:var(--gold);}
+.dot.cur{width:18px;background:var(--gold);}
+.step{display:none;animation:fadeIn 0.3s ease both;}
+.step.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+.eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,34px);font-weight:600;color:var(--black);margin-bottom:28px;line-height:1.2;}
+.q-text em{font-style:italic;color:var(--gold);}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.opt{padding:16px 18px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:13px;color:var(--brown);font-family:'Jost',sans-serif;transition:all 0.2s;text-align:left;display:flex;align-items:center;gap:10px;}
+.opt:hover{border-color:var(--gold);background:var(--cream);transform:translateY(-2px);}
+.opt.selected{border-color:var(--gold);background:var(--gold);color:#fff;}
+.nav-row{display:flex;align-items:center;justify-content:space-between;margin-top:24px;}
+.back-btn{background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-family:'Jost',sans-serif;transition:color 0.2s;}
+.back-btn:hover{color:var(--gold);}
+.note{background:var(--cream);border:1px solid var(--border);padding:16px;margin-bottom:20px;font-size:13px;color:var(--muted);line-height:1.7;}
+.note strong{color:var(--black);}
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.tag{padding:5px 12px;background:rgba(168,137,58,0.15);font-size:11px;color:var(--brown);}
+.fi{width:100%;padding:14px 18px;border:1.5px solid var(--border);background:#fff;font-family:'Jost',sans-serif;font-size:14px;color:var(--brown);outline:none;transition:border 0.2s;display:block;margin-bottom:10px;}
+.fi:focus{border-color:var(--gold);}
+.sbtn{width:100%;padding:17px;background:var(--black);color:#fff;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;transition:background 0.3s;}
+.sbtn:hover{background:var(--gold);}
+.fn{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
+.success{text-align:center;padding:20px 0;display:none;}
+.success.show{display:block;animation:fadeIn 0.5s ease;}
+.s-check{width:64px;height:64px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+.s-check svg{width:30px;height:30px;stroke:var(--gold);stroke-width:2.5;fill:none;}
+.success h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--black);margin-bottom:10px;}
+.success p{color:var(--muted);font-size:14px;line-height:1.8;max-width:380px;margin:0 auto 24px;}
+.s-link{display:inline-block;padding:14px 32px;background:var(--black);color:#fff;text-decoration:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;transition:background 0.3s;}
+.s-link:hover{background:var(--gold);}
+@media(max-width:600px){.card{padding:30px 20px 26px;}.opts{grid-template-columns:1fr;}.header{padding:14px 18px;}}
+</style>
+</head>
+<body>
+<header class="header">
+  <img src="data:image/jpeg;base64,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" alt="AMARANTH">
+  <div><div class="hname">AMARANTH</div><div class="hsub">Interior</div></div>
+  <a href="index.html" class="back-link">← Bosh sahifa</a>
+</header>
+<main>
+<div class="card" id="qCard">
+  <div class="prog-wrap" id="progWrap">
+    <div class="prog-bar"><div class="prog-fill" id="pFill" style="width:0%"></div></div>
+    <div class="prog-meta"><span id="pText">1 / 6 savol</span><div class="dots" id="dots"></div></div>
+  </div>
+  <div class="step active" id="s1">
+    <div class="eyebrow">Qadam 1</div>
+    <div class="q-text">Qaysi xona uchun<br><em>mebel kerak?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'room','Yotoqxona')">Yotoqxona</div>
+      <div class="opt" onclick="pick(this,'room','Xoll')">Xoll</div>
+      <div class="opt" onclick="pick(this,'room','Oshxona')">Oshxona</div>
+      <div class="opt" onclick="pick(this,'room','Mexmonxona')">Mexmonxona</div>
+      <div class="opt" onclick="pick(this,'room','Ofis')">Ofis</div>
+      <div class="opt" onclick="pick(this,'room','Bolalar xonasi')">Bolalar xonasi</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" style="visibility:hidden">—</button></div>
+  </div>
+  <div class="step" id="s2">
+    <div class="eyebrow">Qadam 2</div>
+    <div class="q-text">Qaysi turdagi mebel<br><em>kerak?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'type','Ugalok mebel')">Ugalok mebel</div>
+      <div class="opt" onclick="pick(this,'type','Yotoqxona mebel')">Yotoqxona mebel</div>
+      <div class="opt" onclick="pick(this,'type','Oshxona stol-stul')">Oshxona stol-stul</div>
+      <div class="opt" onclick="pick(this,'type','Mexmonxona stol-stul')">Mexmonxona stol-stul</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="step" id="s3">
+    <div class="eyebrow">Qadam 3</div>
+    <div class="q-text">Xona o'lchami<br><em>qancha?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'size','20 m² gacha')">20 m² gacha</div>
+      <div class="opt" onclick="pick(this,'size','20–40 m²')">20–40 m²</div>
+      <div class="opt" onclick="pick(this,'size','40 m²+')">40 m² dan ortiq</div>
+      <div class="opt" onclick="pick(this,'size','Bilmayman')">Bilmayman</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="step" id="s4">
+    <div class="eyebrow">Qadam 4</div>
+    <div class="q-text">Taxminiy<br><em>byudjet?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'budget','$500 gacha')">$500 gacha</div>
+      <div class="opt" onclick="pick(this,'budget','$500 – $800')">$500 – $800</div>
+      <div class="opt" onclick="pick(this,'budget','$800 – $1500')">$800 – $1500</div>
+      <div class="opt" onclick="pick(this,'budget','$1500 – $2000')">$1500 – $2000</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="step" id="s5">
+    <div class="eyebrow">Qadam 5</div>
+    <div class="q-text">Qachon kerak<br><em>bo'ladi?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'time','Hoziroq olmoqchiman')">Hoziroq olmoqchiman</div>
+      <div class="opt" onclick="pick(this,'time','Tez orada (1–2 hafta)')">Tez orada (1–2 hafta)</div>
+      <div class="opt" onclick="pick(this,'time','1–3 oy ichida')">1–3 oy ichida</div>
+      <div class="opt" onclick="pick(this,'time','Hozircha rejalashtirmoqdaman')">Hozircha rejalashtirmoqdaman</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="step" id="s6">
+    <div class="eyebrow">Qadam 6</div>
+    <div class="q-text">Dizayn-loyiha<br><em>kerakmi?</em></div>
+    <div class="opts">
+      <div class="opt" onclick="pick(this,'design','Ha, kerak')">Ha, kerak</div>
+      <div class="opt" onclick="pick(this,'design',&quot;Yo&apos;q&quot;)">Yo'q, o'zim bilaman</div>
+      <div class="opt" onclick="pick(this,'design','Maslahat kerak')">Maslahat kerak</div>
+    </div>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="step" id="s7">
+    <div class="eyebrow">So'nggi qadam</div>
+    <div class="q-text">Zo'r! <em>Ma'lumot kiriting</em></div>
+    <div class="note"><strong>Mutaxassisimiz 30 daqiqa ichida bog'lanadi</strong> va siz uchun eng mos variantlarni taklif qiladi.</div>
+    <div class="tags-row" id="tagsRow"></div>
+    <input type="text" class="fi" placeholder="Ismingiz" id="fName">
+    <input type="tel" class="fi" placeholder="Telefon raqam (+998...)" id="fPhone">
+    <button class="sbtn" onclick="submitQ()">Natijani olish →</button>
+    <p class="fn">Spam yo'q · Hech qanday majburiyat yo'q</p>
+    <div class="nav-row"><button class="back-btn" onclick="goBack()">← Orqaga</button></div>
+  </div>
+  <div class="success" id="sBlock">
+    <div class="s-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2 id="sName">Rahmat!</h2>
+    <p>Mutaxassisimiz <strong>30 daqiqa ichida</strong> siz bilan bog'lanadi.</p>
+    <a href="thanks.html" class="s-link">Davom etish →</a>
+  </div>
+</div>
+</main>
+<script>
+var ans={};var cur=1;var total=6;
+var keys=['room','type','size','budget','time','design'];
+var labels={room:'Xona',type:'Mebel turi',size:"O'lcham",budget:'Byudjet',time:'Muddat',design:'Dizayn'};
+function initDots(){
+  var d=document.getElementById('dots');d.innerHTML='';
+  for(var i=1;i<=total;i++){
+    var el=document.createElement('div');
+    el.className='dot'+(i===cur?' cur':i<cur?' done':'');
+    d.appendChild(el);
+  }
+}
+initDots();
+function pick(el,key,val){
+  el.closest('.opts').querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected');});
+  el.classList.add('selected');
+  ans[key]=val;
+  setTimeout(next,320);
+}
+function next(){
+  if(cur>total)return;
+  document.getElementById('s'+cur).classList.remove('active');
+  cur++;
+  var nx=document.getElementById('s'+cur);
+  if(nx)nx.classList.add('active');
+  updateUI();
+  if(cur===7)buildTags();
+}
+function goBack(){
+  if(cur<=1)return;
+  document.getElementById('s'+cur).classList.remove('active');
+  cur--;
+  document.getElementById('s'+cur).classList.add('active');
+  updateUI();
+}
+function updateUI(){
+  var step=Math.min(cur,total);
+  document.getElementById('pFill').style.width=((step-1)/total*100)+'%';
+  document.getElementById('pText').textContent=step+' / '+total+' savol';
+  initDots();
+}
+function buildTags(){
+  var html='';
+  keys.forEach(function(k){if(ans[k])html+='<span class="tag">'+labels[k]+': <strong>'+ans[k]+'</strong></span>';});
+  document.getElementById('tagsRow').innerHTML=html;
+}
+function submitQ(){
+  var name=document.getElementById('fName').value.trim();
+  var phone=document.getElementById('fPhone').value.trim();
+  if(!name||!phone){alert('Iltimos, ism va telefon kiriting.');return;}
+  var text='AMARANTH QUIZ\n\nIsm: '+name+'\nTelefon: '+phone+'\n\nXona: '+(ans.room||'-')+'\nMebel turi: '+(ans.type||'-')+"\nO'lcham: "+(ans.size||'-')+'\nByudjet: '+(ans.budget||'-')+'\nMuddat: '+(ans.time||'-')+'\nDizayn: '+(ans.design||'-');
+  var bot='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
+  var tgts=['1455425842','-1003740433377'];
+  tgts.forEach(function(id){
+    fetch('https://api.telegram.org/bot'+bot+'/sendMessage',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:id,text:text})
+    }).catch(function(){});
+  });
+  document.getElementById('s7').classList.remove('active');
+  document.getElementById('progWrap').style.display='none';
+  var sc=document.getElementById('sBlock');
+  sc.classList.add('show');
+  document.getElementById('sName').textContent='Rahmat, '+name+'!';
+  setTimeout(function(){window.location.href='thanks.html';},2500);
+}
+</script>
+</body>
+</html>
