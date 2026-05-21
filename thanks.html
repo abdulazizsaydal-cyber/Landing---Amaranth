@@ -14,6 +14,17 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1952296722140349');
 fbq('track', 'PageView');
 fbq('track', 'Lead');
+
+// CAPI - server side Lead event
+fetch('/api/event', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({
+    event_name: 'Lead',
+    event_url: window.location.href,
+    client_user_agent: navigator.userAgent
+  })
+}).catch(function(){});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1952296722140349&ev=Lead&noscript=1"
