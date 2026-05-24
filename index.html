@@ -290,6 +290,17 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
 .quiz-q{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,28px);color:var(--black);margin-bottom:24px;font-weight:500;}
 .quiz-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
 .quiz-opt{padding:16px 20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--brown);transition:all 0.2s;font-family:'Jost',sans-serif;}
+.lead-form{max-width:560px;margin:0 auto;text-align:left;scroll-margin-top:90px;}
+.lf-q{margin-bottom:26px;}
+.lf-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;font-weight:500;}
+.lf-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.lf-opt{padding:15px 18px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--brown);transition:all 0.2s;font-family:'Jost',sans-serif;text-align:center;}
+.lf-opt:hover{border-color:var(--gold);background:var(--warm);}
+.lf-opt.selected{border-color:var(--gold);background:var(--gold);color:var(--black);font-weight:500;}
+.lf-input{width:100%;padding:16px 18px;border:1.5px solid var(--border);background:#fff;font-family:'Jost',sans-serif;font-size:15px;color:var(--brown);outline:none;transition:border 0.2s;margin-bottom:12px;}
+.lf-input:focus{border-color:var(--gold);}
+.lf-fine{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300;}
+@media(max-width:600px){.lf-opts{grid-template-columns:1fr;}.fcta{padding:70px 22px;}}
 .quiz-opt:hover{border-color:var(--gold);background:var(--warm);}
 .quiz-opt.selected{border-color:var(--gold);background:var(--gold);color:#fff;}
 .quiz-final-form{display:flex;flex-direction:column;gap:14px;}
@@ -307,7 +318,7 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
   <a href="#showroom" onclick="closeMnav()">Showroom</a>
   <a href="#reviews" onclick="closeMnav()">Mijozlar</a>
   <a href="#faq" onclick="closeMnav()">FAQ</a>
-  <a href="quiz.html" onclick="closeMnav()" style="color:var(--gold)">Ariza qoldirish</a>
+  <a href="#ariza" onclick="closeMnav()" style="color:var(--gold)">Ariza qoldirish</a>
 </div>
 
 <!-- NAV -->
@@ -325,7 +336,7 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
     <li><a href="#reviews">Mijozlar</a></li>
     <li><a href="#faq">Savollar</a></li>
   </ul>
-  <a href="quiz.html" class="btn-nav">Ariza qoldirish</a>
+  <a href="#ariza" class="btn-nav">Ariza qoldirish</a>
   <div class="hbg" onclick="openMnav()"><span></span><span></span><span></span></div>
 </nav>
 
@@ -341,7 +352,7 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
       <div class="badge">100+ assortiment</div>
     </div>
     <div class="btns">
-      <a href="quiz.html" class="btn-p">Bepul maslahat olish</a>
+      <a href="#ariza" class="btn-p">Bepul maslahat olish</a>
       <a href="#showroom" class="btn-s2">Showroomga borish</a>
     </div>
   </div>
@@ -423,7 +434,7 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
         <div class="copt fu"><div class="con">03</div><div><span class="cot">O'lcham va konfiguratsiya</span><span class="cox">Xonangizga to'liq mos o'lcham. Burchakli, L-shakl, U-shakl — qanday xohlasangiz.</span></div></div>
         <div class="copt fu"><div class="con">04</div><div><span class="cot">Dizayn elementlari</span><span class="cox">Oyoq materiallari, tikish uslubi, yostiq komplekti — har bir detal sizning tabiatingizga mos.</span></div></div>
       </div>
-      <a href="quiz.html" class="btn-p" style="display:inline-block;margin-top:38px;">Ariza qoldirish</a>
+      <a href="#ariza" class="btn-p" style="display:inline-block;margin-top:38px;">Ariza qoldirish</a>
     </div>
   </div>
 </section>
@@ -542,98 +553,7 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
 </section>
 
 <!-- QUIZ -->
-<section class="quiz-section" id="quiz">
-  <div class="quiz-wrap">
-    <div class="sec-eye" style="justify-content:center;">Bepul Maslahat</div>
-    <h2 style="text-align:center;">3 daqiqada <em>ideal mebelingizni</em> toping</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:14px;">Savollarimizga javob bering — mutaxassisimiz aynan sizga mos variantlarni taklif qiladi</p>
 
-    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qProgressFill"></div></div>
-    <div class="quiz-progress-text"><span id="qCurrent">1</span> / <span id="qTotal">6</span></div>
-
-    <!-- Step 1 -->
-    <div class="quiz-step active" id="qs1">
-      <div class="quiz-q">Qaysi xona uchun mebel kerak?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Yashash xonasi')">Yashash xonasi</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Yotoqxona')">Yotoqxona</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Oshxona')">Oshxona</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Bolalar xonasi')">Bolalar xonasi</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Kabinet')">Kabinet</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Butun uy')">Butun uy</div>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="quiz-step" id="qs2">
-      <div class="quiz-q">Qaysi uslubni yoqtirasiz?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Zamonaviy')">Zamonaviy</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Klassik')">Klassik</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Minimalizm')">Minimalizm</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Loft')">Loft</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Hali aniq emas')">Hali aniq emas</div>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="quiz-step" id="qs3">
-      <div class="quiz-q">Xona o'lchami qancha?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'size','20 m² gacha')">20 m² gacha</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','20–40 m²')">20–40 m²</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','40 m² dan ortiq')">40 m² dan ortiq</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','Bilmayman')">Bilmayman</div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="quiz-step" id="qs4">
-      <div class="quiz-q">Taxminiy byudjet?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','5 mln gacha')">5 mln gacha</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','5–15 mln')">5–15 mln</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','15 mln dan ortiq')">15 mln dan ortiq</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','Hali aniqlamagan')">Hali aniqlamagan</div>
-      </div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="quiz-step" id="qs5">
-      <div class="quiz-q">Qachon kerak?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'time','Tezda (1–2 hafta)')">Tezda (1–2 hafta)</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'time','1–3 oy ichida')">1–3 oy ichida</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'time','Hozircha rejalashtiryapman')">Hozircha rejalashtiryapman</div>
-      </div>
-    </div>
-
-    <!-- Step 6 -->
-    <div class="quiz-step" id="qs6">
-      <div class="quiz-q">Dizayn-loyiha kerakmi?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Ha, kerak')">Ha, kerak</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Yo\'q, o\'zim bilaman')">Yo'q, o'zim bilaman</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Bilmayman, maslahat kerak')">Maslahat kerak</div>
-      </div>
-    </div>
-
-    <!-- Final Step -->
-    <div class="quiz-step" id="qs7">
-      <div class="quiz-q">Zo'r! Natijani olish uchun ma'lumot kiriting</div>
-      <div class="quiz-final-form">
-        <input type="text" class="fi3" placeholder="Ismingiz (masalan: Dilnoza)" id="qname">
-        <input type="tel" class="fi3" placeholder="Telefon raqamingiz (+998...)" id="qphone">
-        <button class="bf" onclick="submitQuiz()">Natijani olish va maslahat so'rash →</button>
-        <p class="fn">30 daqiqa ichida mutaxassis siz bilan bog'lanadi</p>
-      </div>
-    </div>
-
-    <div class="quiz-nav" id="qNav">
-      <button class="quiz-back" id="qBack" onclick="quizBack()" style="display:none;">← Orqaga</button>
-    </div>
-  </div>
-</section>
 
 
 
@@ -643,7 +563,34 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
     <div class="sec-eye" style="justify-content:center;">Oxirgi Qadam</div>
     <h2>Orzuingizadagi uy<br><em>sizni kutmoqda</em></h2>
     <p class="fctax">Minglab oilalar AMARANTH bilan uylarini go'zallashtirdi. Endi sizning navbatingiz. Bepul maslahat oling — xavotir yo'q, majburiyat yo'q.</p>
-    <a href="quiz.html" class="btn-p" style="display:inline-block;">Hozir ariza qoldirish</a>
+    <div class="lead-form" id="ariza">
+      <div class="lf-q">
+        <span class="lf-label">1 — Qaysi xona uchun mebel kerak?</span>
+        <div class="lf-opts" id="lfRoom">
+          <div class="lf-opt" onclick="lfPick(this,'room','Yotoqxona')">Yotoqxona</div>
+          <div class="lf-opt" onclick="lfPick(this,'room','Xoll')">Xoll</div>
+          <div class="lf-opt" onclick="lfPick(this,'room','Oshxona')">Oshxona</div>
+          <div class="lf-opt" onclick="lfPick(this,'room','Mexmonxona')">Mexmonxona</div>
+          <div class="lf-opt" onclick="lfPick(this,'room','Ofis')">Ofis</div>
+          <div class="lf-opt" onclick="lfPick(this,'room','Bolalar xonasi')">Bolalar xonasi</div>
+        </div>
+      </div>
+      <div class="lf-q">
+        <span class="lf-label">2 — Qaysi turdagi mebel kerak?</span>
+        <div class="lf-opts" id="lfType">
+          <div class="lf-opt" onclick="lfPick(this,'type','Ugalok mebel')">Ugalok mebel</div>
+          <div class="lf-opt" onclick="lfPick(this,'type','Yotoqxona mebel')">Yotoqxona mebel</div>
+          <div class="lf-opt" onclick="lfPick(this,'type','Oshxona stol-stul')">Oshxona stol-stul</div>
+          <div class="lf-opt" onclick="lfPick(this,'type','Mexmonxona stol-stul')">Mexmonxona stol-stul</div>
+        </div>
+      </div>
+      <input type="text" class="lf-input" id="fname" placeholder="Ismingiz">
+      <input type="tel" class="lf-input" id="fphone" placeholder="Telefon raqam (+998...)">
+      <input type="hidden" id="ftype">
+      <input type="hidden" id="fmsg">
+      <button class="bf" onclick="submitForm()">Bepul maslahat olish →</button>
+      <p class="lf-fine">Spam yo'q · Hech qanday majburiyat yo'q</p>
+    </div>
   </div>
 </section>
 
@@ -661,14 +608,14 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
     <a href="#showroom">Showroom</a>
     <a href="#reviews">Mijozlar</a>
     <a href="#faq">FAQ</a>
-    <a href="quiz.html">Ariza</a>
+    <a href="#ariza">Ariza</a>
   </div>
   <div class="fc2">© 2025 AMARANTH MEBEL. Barcha huquqlar himoyalangan.</div>
 </footer>
 
 <!-- STICKY MOBILE -->
 <div class="sticky" id="sticky">
-  <a href="quiz.html" class="bsg">Ariza qoldirish</a>
+  <a href="#ariza" class="bsg">Ariza qoldirish</a>
 </div>
 
 <script>
@@ -695,71 +642,21 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').style.boxShadow=window.scrollY>60?'0 4px 30px rgba(0,0,0,0.08)':'none';
 });
 
-// QUIZ
-const quizAnswers={};
-let currentStep=1;
-const totalSteps=6;
-const stepKeys=['room','style','size','budget','time','design'];
-
-function selectOpt(el,key,val){
-  // deselect same group
-  el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
+// INLINE LEAD FORM
+const lfAnswers={};
+function lfPick(el,key,val){
+  el.closest('.lf-opts').querySelectorAll('.lf-opt').forEach(o=>o.classList.remove('selected'));
   el.classList.add('selected');
-  quizAnswers[key]=val;
-  setTimeout(()=>quizNext(),350);
-}
-
-function quizNext(){
-  if(currentStep>totalSteps) return;
-  document.getElementById('qs'+currentStep).classList.remove('active');
-  currentStep++;
-  const nextEl=document.getElementById('qs'+currentStep);
-  if(nextEl){nextEl.classList.add('active');}
-  updateQuizUI();
-}
-
-function quizBack(){
-  if(currentStep<=1) return;
-  document.getElementById('qs'+currentStep).classList.remove('active');
-  currentStep--;
-  document.getElementById('qs'+currentStep).classList.add('active');
-  updateQuizUI();
-}
-
-function updateQuizUI(){
-  const fill=Math.min((currentStep-1)/totalSteps*100,100);
-  document.getElementById('qProgressFill').style.width=fill+'%';
-  document.getElementById('qCurrent').textContent=Math.min(currentStep,totalSteps);
-  document.getElementById('qBack').style.display=currentStep>1?'inline-block':'none';
-  document.getElementById('qNav').style.display=currentStep>totalSteps?'none':'block';
-}
-
-function submitQuiz(){
-  const name=document.getElementById('qname').value.trim();
-  const phone=document.getElementById('qphone').value.trim();
-  if(!name||!phone){alert('Iltimos, ism va telefon raqamingizni kiriting.');return;}
-  const text=`🎯 AMARANTH — QUIZ NATIJASI\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n\n🏠 Xona: ${quizAnswers.room||'—'}\n🎨 Uslub: ${quizAnswers.style||'—'}\n📐 O'lcham: ${quizAnswers.size||'—'}\n💰 Byudjet: ${quizAnswers.budget||'—'}\n📅 Muddati: ${quizAnswers.time||'—'}\n✏️ Dizayn: ${quizAnswers.design||'—'}`;
-  const BOT='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
-  const TARGETS=['1455425842','-1003740433377'];
-  TARGETS.forEach(id=>{
-    fetch(`https://api.telegram.org/bot${BOT}/sendMessage`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:id,text})
-    }).catch(()=>{});
-  });
-  document.getElementById('qs7').innerHTML=`<div style="text-align:center;padding:40px 0;"><div style="font-size:36px;font-family:'Cormorant Garamond',serif;font-weight:600;margin-bottom:16px;color:var(--gold);">✓</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--black);margin-bottom:12px;">Rahmat, ${name}!</div><p style="color:var(--muted);font-size:14px;">Mutaxassisimiz 30 daqiqa ichida siz bilan bog'lanadi va <strong>${quizAnswers.room||'xonangiz'}</strong> uchun eng yaxshi variantlarni taklif qiladi.</p></div>`;
-  document.getElementById('qNav').style.display='none';
-  document.getElementById('qProgressFill').style.width='100%';
+  lfAnswers[key]=val;
 }
 
 function submitForm(){
   const name=document.getElementById('fname').value.trim();
   const phone=document.getElementById('fphone').value.trim();
   if(!name||!phone){alert('Iltimos, ism va telefon raqamingizni kiriting.');return;}
+  if(!lfAnswers.room||!lfAnswers.type){alert('Iltimos, ikkala savolga ham javob bering.');return;}
   if(typeof fbq!=='undefined') fbq('track','Lead');
-  const type=document.getElementById('ftype').value||'Belgilanmagan';
-  const msg=document.getElementById('fmsg').value.trim();
-  const text=`🛋️ AMARANTH MEBEL — YANGI ARIZA\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n📦 Mebel turi: ${type}\n💬 Xabar: ${msg||'—'}`;
+  const text=`🛋️ AMARANTH MEBEL — YANGI ARIZA\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n\n🏠 Xona: ${lfAnswers.room||'—'}\n📦 Mebel turi: ${lfAnswers.type||'—'}`;
   const BOT='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
   const TARGETS=['1455425842','-1003740433377'];
   TARGETS.forEach(id=>{
@@ -769,10 +666,9 @@ function submitForm(){
       body:JSON.stringify({chat_id:id, text})
     }).catch(()=>{});
   });
-  const btn=document.querySelector('.bf');
-  btn.textContent='✓ Arizangiz qabul qilindi! 30 daqiqa ichida bog\'lanamiz.';
-  btn.style.background='#27AE60';
-  btn.disabled=true;
+  const form=document.getElementById('ariza');
+  form.innerHTML=`<div style="text-align:center;padding:30px 0;"><div style="width:64px;height:64px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px;color:var(--gold);">✓</div><div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--black);margin-bottom:12px;">Rahmat, ${name}!</div><p style="color:var(--muted);font-size:15px;line-height:1.8;max-width:400px;margin:0 auto;">Mutaxassisimiz <strong>30 daqiqa ichida</strong> siz bilan bog'lanadi va <strong>${lfAnswers.room}</strong> uchun eng yaxshi variantlarni taklif qiladi.</p></div>`;
+  setTimeout(()=>{window.location.href='thanks.html';},2500);
 }
 </script>
 </body>
