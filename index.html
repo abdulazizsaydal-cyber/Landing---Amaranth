@@ -585,97 +585,60 @@ footer{background:var(--black);padding:56px 80px;display:flex;justify-content:sp
 <section class="quiz-section" id="quiz">
   <div class="quiz-wrap">
     <div class="sec-eye" style="justify-content:center;">Bepul Maslahat</div>
-    <h2 style="text-align:center;">3 daqiqada <em>ideal mebelingizni</em> toping</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:14px;">Savollarimizga javob bering — mutaxassisimiz aynan sizga mos variantlarni taklif qiladi</p>
+    <h2 style="text-align:center;">3 savolga javob bering —<br><em>maslahat oling</em></h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:40px;font-size:14px;line-height:1.7;">Mutaxassisimiz 30 daqiqa ichida siz bilan bog'lanadi</p>
 
-    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qProgressFill"></div></div>
-    <div class="quiz-progress-text"><span id="qCurrent">1</span> / <span id="qTotal">6</span></div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qProgressFill" style="width:33%"></div></div>
+    <div class="quiz-progress-text"><span id="qCurrent">1</span> / <span id="qTotal">3</span></div>
 
-    <!-- Step 1 -->
+    <!-- Step 1: Xona -->
     <div class="quiz-step active" id="qs1">
       <div class="quiz-q">Qaysi xona uchun mebel kerak?</div>
       <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Yashash xonasi')">Yashash xonasi</div>
         <div class="quiz-opt" onclick="selectOpt(this,'room','Yotoqxona')">Yotoqxona</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'room','Xoll')">Xoll</div>
         <div class="quiz-opt" onclick="selectOpt(this,'room','Oshxona')">Oshxona</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'room','Mexmonxona')">Mexmonxona</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'room','Ofis')">Ofis</div>
         <div class="quiz-opt" onclick="selectOpt(this,'room','Bolalar xonasi')">Bolalar xonasi</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Kabinet')">Kabinet</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'room','Butun uy')">Butun uy</div>
       </div>
     </div>
 
-    <!-- Step 2 -->
+    <!-- Step 2: Mebel turi -->
     <div class="quiz-step" id="qs2">
-      <div class="quiz-q">Qaysi uslubni yoqtirasiz?</div>
+      <div class="quiz-q">Qaysi turdagi mebel kerak?</div>
       <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Zamonaviy')">Zamonaviy</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Klassik')">Klassik</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Minimalizm')">Minimalizm</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Loft')">Loft</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'style','Hali aniq emas')">Hali aniq emas</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'type','Ugalok mebel')">Ugalok mebel</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'type','Yotoqxona mebel')">Yotoqxona mebel</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'type','Oshxona stol-stul')">Oshxona stol-stul</div>
+        <div class="quiz-opt" onclick="selectOpt(this,'type','Mexmonxona stol-stul')">Mexmonxona stol-stul</div>
       </div>
+      <div class="quiz-nav"><button class="quiz-back" onclick="quizBack()">← Orqaga</button></div>
     </div>
 
-    <!-- Step 3 -->
+    <!-- Step 3: Telefon -->
     <div class="quiz-step" id="qs3">
-      <div class="quiz-q">Xona o'lchami qancha?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'size','20 m² gacha')">20 m² gacha</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','20–40 m²')">20–40 m²</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','40 m² dan ortiq')">40 m² dan ortiq</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'size','Bilmayman')">Bilmayman</div>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="quiz-step" id="qs4">
-      <div class="quiz-q">Taxminiy byudjet?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','5 mln gacha')">5 mln gacha</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','5–15 mln')">5–15 mln</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','15 mln dan ortiq')">15 mln dan ortiq</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'budget','Hali aniqlamagan')">Hali aniqlamagan</div>
-      </div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="quiz-step" id="qs5">
-      <div class="quiz-q">Qachon kerak?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'time','Tezda (1–2 hafta)')">Tezda (1–2 hafta)</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'time','1–3 oy ichida')">1–3 oy ichida</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'time','Hozircha rejalashtiryapman')">Hozircha rejalashtiryapman</div>
-      </div>
-    </div>
-
-    <!-- Step 6 -->
-    <div class="quiz-step" id="qs6">
-      <div class="quiz-q">Dizayn-loyiha kerakmi?</div>
-      <div class="quiz-opts">
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Ha, kerak')">Ha, kerak</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Yo\'q, o\'zim bilaman')">Yo'q, o'zim bilaman</div>
-        <div class="quiz-opt" onclick="selectOpt(this,'design','Bilmayman, maslahat kerak')">Maslahat kerak</div>
-      </div>
-    </div>
-
-    <!-- Final Step -->
-    <div class="quiz-step" id="qs7">
-      <div class="quiz-q">Zo'r! Natijani olish uchun ma'lumot kiriting</div>
+      <div class="quiz-q">Zo'r! Ism va telefon kiriting</div>
       <div class="quiz-final-form">
-        <input type="text" class="fi3" placeholder="Ismingiz (masalan: Dilnoza)" id="qname">
+        <input type="text" class="fi3" placeholder="Ismingiz" id="qname">
         <input type="tel" class="fi3" placeholder="Telefon raqamingiz (+998...)" id="qphone">
-        <button class="bf" onclick="submitQuiz()">Natijani olish va maslahat so'rash →</button>
-        <p class="fn">30 daqiqa ichida mutaxassis siz bilan bog'lanadi</p>
+        <button class="bf" onclick="submitQuiz()">Maslahat olish →</button>
+        <p class="fn">Spam yo'q · 30 daqiqa ichida javob</p>
+      </div>
+      <div class="quiz-nav"><button class="quiz-back" onclick="quizBack()">← Orqaga</button></div>
+    </div>
+
+    <!-- Success -->
+    <div class="quiz-step" id="qs4">
+      <div style="text-align:center;padding:30px 0;">
+        <div style="width:60px;height:60px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:var(--gold);">✓</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--black);margin-bottom:10px;">Rahmat!</h3>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;">Mutaxassisimiz <strong>30 daqiqa ichida</strong> siz bilan bog'lanadi.</p>
       </div>
     </div>
 
-    <div class="quiz-nav" id="qNav">
-      <button class="quiz-back" id="qBack" onclick="quizBack()" style="display:none;">← Orqaga</button>
-    </div>
   </div>
 </section>
-
-
 
 <!-- FINAL CTA -->
 <section class="fcta">
@@ -741,78 +704,59 @@ let currentStep=1;
 const totalSteps=6;
 const stepKeys=['room','style','size','budget','time','design'];
 
-function selectOpt(el,key,val){
-  // deselect same group
-  el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(o=>o.classList.remove('selected'));
+var qStep = 1;
+var qTotal = 3;
+var qAns = {};
+
+function selectOpt(el, key, val) {
+  el.closest('.quiz-opts').querySelectorAll('.quiz-opt').forEach(function(o){ o.classList.remove('selected'); });
   el.classList.add('selected');
-  quizAnswers[key]=val;
-  setTimeout(()=>quizNext(),350);
+  qAns[key] = val;
+  setTimeout(function(){ quizNext(); }, 300);
 }
 
-function quizNext(){
-  if(currentStep>totalSteps) return;
-  document.getElementById('qs'+currentStep).classList.remove('active');
-  currentStep++;
-  const nextEl=document.getElementById('qs'+currentStep);
-  if(nextEl){nextEl.classList.add('active');}
+function quizNext() {
+  document.getElementById('qs' + qStep).classList.remove('active');
+  qStep++;
+  document.getElementById('qs' + qStep).classList.add('active');
   updateQuizUI();
 }
 
-function quizBack(){
-  if(currentStep<=1) return;
-  document.getElementById('qs'+currentStep).classList.remove('active');
-  currentStep--;
-  document.getElementById('qs'+currentStep).classList.add('active');
+function quizBack() {
+  document.getElementById('qs' + qStep).classList.remove('active');
+  qStep--;
+  document.getElementById('qs' + qStep).classList.add('active');
   updateQuizUI();
 }
 
-function updateQuizUI(){
-  const fill=Math.min((currentStep-1)/totalSteps*100,100);
-  document.getElementById('qProgressFill').style.width=fill+'%';
-  document.getElementById('qCurrent').textContent=Math.min(currentStep,totalSteps);
-  document.getElementById('qBack').style.display=currentStep>1?'inline-block':'none';
-  document.getElementById('qNav').style.display=currentStep>totalSteps?'none':'block';
+function updateQuizUI() {
+  var fill = (qStep / qTotal) * 100;
+  document.getElementById('qProgressFill').style.width = fill + '%';
+  document.getElementById('qCurrent').textContent = Math.min(qStep, qTotal);
 }
 
-function submitQuiz(){
-  const name=document.getElementById('qname').value.trim();
-  const phone=document.getElementById('qphone').value.trim();
-  if(!name||!phone){alert('Iltimos, ism va telefon raqamingizni kiriting.');return;}
-  const text=`🎯 AMARANTH — QUIZ NATIJASI\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n\n🏠 Xona: ${quizAnswers.room||'—'}\n🎨 Uslub: ${quizAnswers.style||'—'}\n📐 O'lcham: ${quizAnswers.size||'—'}\n💰 Byudjet: ${quizAnswers.budget||'—'}\n📅 Muddati: ${quizAnswers.time||'—'}\n✏️ Dizayn: ${quizAnswers.design||'—'}`;
-  const BOT='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
-  const TARGETS=['1455425842','-1003740433377'];
-  TARGETS.forEach(id=>{
-    fetch(`https://api.telegram.org/bot${BOT}/sendMessage`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:id,text})
-    }).catch(()=>{});
-  });
-  document.getElementById('qs7').innerHTML=`<div style="text-align:center;padding:40px 0;"><div style="font-size:36px;font-family:'Cormorant Garamond',serif;font-weight:600;margin-bottom:16px;color:var(--gold);">✓</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--black);margin-bottom:12px;">Rahmat, ${name}!</div><p style="color:var(--muted);font-size:14px;">Mutaxassisimiz 30 daqiqa ichida siz bilan bog'lanadi va <strong>${quizAnswers.room||'xonangiz'}</strong> uchun eng yaxshi variantlarni taklif qiladi.</p></div>`;
-  document.getElementById('qNav').style.display='none';
-  document.getElementById('qProgressFill').style.width='100%';
-}
+function submitQuiz() {
+  var name = document.getElementById('qname').value.trim();
+  var phone = document.getElementById('qphone').value.trim();
+  if (!name || !phone) { alert('Iltimos, ism va telefon kiriting.'); return; }
 
-function submitForm(){
-  const name=document.getElementById('fname').value.trim();
-  const phone=document.getElementById('fphone').value.trim();
-  if(!name||!phone){alert('Iltimos, ism va telefon raqamingizni kiriting.');return;}
-  if(typeof fbq!=='undefined') fbq('track','Lead');
-  const type=document.getElementById('ftype').value||'Belgilanmagan';
-  const msg=document.getElementById('fmsg').value.trim();
-  const text=`🛋️ AMARANTH MEBEL — YANGI ARIZA\n\n👤 Ism: ${name}\n📞 Telefon: ${phone}\n📦 Mebel turi: ${type}\n💬 Xabar: ${msg||'—'}`;
-  const BOT='8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
-  const TARGETS=['1455425842','-1003740433377'];
-  TARGETS.forEach(id=>{
-    fetch(`https://api.telegram.org/bot${BOT}/sendMessage`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({chat_id:id, text})
-    }).catch(()=>{});
+  var text = 'AMARANTH — ARIZA\n\nIsm: ' + name + '\nTelefon: ' + phone +
+    '\n\nXona: ' + (qAns.room || '-') +
+    '\nMebel turi: ' + (qAns.type || '-');
+
+  var bot = '8813475053:AAEeEqZX5t1r5AergLqEWLYjHypEo0E0sNg';
+  ['1455425842', '-1003740433377'].forEach(function(id) {
+    fetch('https://api.telegram.org/bot' + bot + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: id, text: text })
+    }).catch(function(){});
   });
-  const btn=document.querySelector('.bf');
-  btn.textContent='✓ Arizangiz qabul qilindi! 30 daqiqa ichida bog\'lanamiz.';
-  btn.style.background='#27AE60';
-  btn.disabled=true;
+
+  document.getElementById('qs3').classList.remove('active');
+  document.getElementById('qProgressFill').style.width = '100%';
+  document.getElementById('qs4').classList.add('active');
+  document.getElementById('qCurrent').textContent = '3';
 }
 </script>
 </body>
